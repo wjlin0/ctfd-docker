@@ -4,6 +4,7 @@ services:
     build: .
     user: root
     restart: always
+    platform: linux/amd64
     ports:
       - "8000:8000"     
     environment:
@@ -33,6 +34,7 @@ services:
   db:
     image: mariadb:10.4
     restart: always
+    platform: linux/amd64
     environment:
       - MYSQL_ROOT_PASSWORD=ctfd
       - MYSQL_USER=ctfd
@@ -48,6 +50,7 @@ services:
   cache:
     image: redis:4
     restart: always
+    platform: linux/amd64
     volumes:
       - .data/redis:/data
     networks:
@@ -57,6 +60,7 @@ services:
   frpc:    
     image: glzjin/frp:latest     
     restart: always
+    platform: linux/amd64
     volumes:
       - ./frpc:/conf/     
     entrypoint:
@@ -72,6 +76,7 @@ services:
   frps:
     image: glzjin/frp:latest
     restart: always
+    platform: linux/amd64
     volumes:
       - ./frps:/conf/
     entrypoint:
